@@ -163,9 +163,9 @@ class       Namespace {
                         current = current.getChild(level);
                         //If the namespace level does not exists
                         if (current === null) {
-                            throw "Namespace "+namespace+" not found !"
+                            throw "Namespace "+namespace+" not found !";
                         }
-                    };
+                    });
                     return current;
                 } else {
                     throw "Namespace name must be a non-empty string";
