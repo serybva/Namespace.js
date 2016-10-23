@@ -136,11 +136,15 @@ class       Namespace {
                     var path = namespace.split('\\');
                     var current = this.root;
 
+                    path.shift();
                     //Loop on each namespace level
                     path.forEach(function(level) {
                         //If the namespace level does not exists
+                        //adds the namespace to the current namespace level
                         if (current.getChild(level) === null) {
                             current = current.addChild(level);
+                        } else {//Go deeper otherwise
+                            current = current.getChild(level);
                         }
                     }.bind(this));
                     return current;
@@ -153,6 +157,7 @@ class       Namespace {
                     var path = namespace.split('\\');
                     var current = this.root;
 
+                    path.shift();
                     //Loop on each namespace level
                     path.forEach(function(level) {
                         current = current.getChild(level);
@@ -160,7 +165,7 @@ class       Namespace {
                         if (current === null) {
                             throw "Namespace "+namespace+" not found !"
                         }
-                    });
+                    };
                     return current;
                 } else {
                     throw "Namespace name must be a non-empty string";
